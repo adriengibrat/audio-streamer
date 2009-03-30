@@ -1,0 +1,31 @@
+Audio Streamer allow to convert virtually any audio file format to a mp3 stream or file.
+
+Published under the LGPL licence.
+
+In order to work, this class needs external decoding/encoding tool.
+You can find the list of usefull decoders and encoders below,
+you can comment or decomment decoder/encoder line to match with your actual 
+server configuration.
+
+By exemple, if your lame version has been compiled with ogg support,
+you can use lame with --ogginput, so decomment the third lines of decoders and encoders and
+comment the fourth line of decoder.
+
+If you don't have ffmpeg available, you can comment all ffmpeg decoder lines.
+And if ffmpeg is installed, check what formats are supported 
+(i.e witch libraries are on your system) with the command line `ffmpeg -formats`.
+You must comment all unsupported formats, and/or add lines for the supported ones.
+
+You can even use a general option for all unspecified formats by uncommenting the * line,
+if theire is no specific decoder, the class will try to decode the audio file 
+with the * decoder (ffmpeg by default)
+
+This class should works on windows and *nix systems, for windows system you'll need to install
+the tee utilitie (tee.com) to use the save_stream() method (or you'll need to rewrite it).
+
+All listed decoders should be available for both systems.
+I join the lame encoder for window and debian, this should be usefull for most people.
+
+This class is not complete and not documented, sorry, i want to add an internal cache sytem, 
+but i know that you can use any personnal caching system for a custom solution 
+by using save_stream() method.
